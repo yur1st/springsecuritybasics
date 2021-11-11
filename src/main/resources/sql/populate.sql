@@ -1,0 +1,7 @@
+INSERT INTO USERS
+VALUES (NULL, 'happy', '12345', '1');
+INSERT INTO AUTHORITIES
+VALUES (NULL, 'happy', 'write');
+
+INSERT INTO CUSTOMER
+VALUES (NULL, 'my@email.com', '$2a$04$EtYOpT25dXzMlGDFrX/2EO1j1xn92DsMhD8xNpB91/v7eVUi7v5Ui', 'admin');
