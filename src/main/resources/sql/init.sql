@@ -1,6 +1,7 @@
 DROP TABLE users;
 DROP TABLE authorities;
 DROP TABLE customer;
+DROP TABLE cards;
 
 
 
@@ -29,3 +30,18 @@ CREATE TABLE customer
     role  varchar(50)  NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE cards
+(
+    card_id          INt         NOT NULL AUTO_INCREMENT,
+    customer_id      INT         NOT NULL,
+    card_number      VARCHAR(50) NOT NULL,
+    card_type        VARCHAR(50) NOT NULL,
+    total_limit      INT         NOT NULL,
+    amount_used      INT         NOT NULL,
+    available_amount INT         NOT NULL,
+    create_date      INT         NOT NULL,
+    PRIMARY KEY (customer_id)
+)
+
+
