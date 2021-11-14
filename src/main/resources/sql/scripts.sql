@@ -17,14 +17,6 @@ CREATE TABLE `users`
     PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `authorities`
-(
-    `id`        int         NOT NULL AUTO_INCREMENT,
-    `username`  varchar(45) NOT NULL,
-    `authority` varchar(45) NOT NULL,
-    PRIMARY KEY (`id`)
-);
-
 CREATE TABLE `customer`
 (
     `customer_id`   int          NOT NULL AUTO_INCREMENT,
@@ -40,6 +32,23 @@ CREATE TABLE `customer`
 INSERT INTO `customer` (`name`, `email`, `mobile_number`, `pwd`, `role`, `create_dt`)
 VALUES ('Happy', 'happy@example.com', '9876548337', '$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2',
         'admin', CURDATE());
+
+
+CREATE TABLE `authorities`
+(
+    `id`          int         NOT NULL AUTO_INCREMENT,
+    `customer_id` int         NOT NULL,
+    `name`        varchar(45) NOT NULL,
+    PRIMARY KEY (`id`),
+    constraint `authorities_ibfk_1` foreign key (`customer_id`) references `customer` (`customer_id`)
+);
+
+INSERT INTO `authorities` (`id`, `customer_id`, `name`)
+values (1, 1, 'ROLE_USER');
+
+INSERT INTO `authorities` (`id`, `customer_id`, `name`)
+values (2, 1, 'ROLE_ADMIN');
+
 
 CREATE TABLE `accounts`
 (
@@ -183,19 +192,19 @@ INSERT INTO `notice_details` (`notice_summary`, `notice_details`, `notic_beg_dt`
                               `update_dt`)
 VALUES ('Home Loan Interest rates reduced',
         'Home loan interest rates are reduced as per the goverment guidelines. The updated rates will be effective immediately',
-        '2020-10-14', '2020-11-30', CURDATE(), null);
+        '2020-10-14', '2022-11-30', CURDATE(), null);
 
 INSERT INTO `notice_details` (`notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`,
                               `update_dt`)
 VALUES ('Net Banking Offers',
         'Customers who will opt for Internet banking while opening a saving account will get a $50 amazon voucher',
-        '2020-10-14', '2020-12-05', CURDATE(), null);
+        '2020-10-14', '2022-12-05', CURDATE(), null);
 
 INSERT INTO `notice_details` (`notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`,
                               `update_dt`)
 VALUES ('Mobile App Downtime',
         'The mobile application of the EazyBank will be down from 2AM-5AM on 12/05/2020 due to maintenance activities',
-        '2020-10-14', '2020-12-01', CURDATE(), null);
+        '2020-10-14', '2022-12-01', CURDATE(), null);
 
 INSERT INTO `notice_details` (`notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`,
                               `update_dt`)

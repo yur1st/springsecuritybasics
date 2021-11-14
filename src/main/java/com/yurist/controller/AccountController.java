@@ -12,6 +12,10 @@ public class AccountController {
 
     private AccountsRepository accountsRepository;
 
+    public AccountController(AccountsRepository accountsRepository) {
+        this.accountsRepository = accountsRepository;
+    }
+
     @PostMapping("/myAccount")
     public Accounts getAccountDetails(@RequestBody Customer customer) {
         Accounts accounts = accountsRepository.findByCustomerId(customer.getId());
